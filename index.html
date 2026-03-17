@@ -62,9 +62,16 @@
         <div class="toolsRow">
           <div class="toolGroup">
             <button class="toolBtn" id="pasteBtn" type="button">📋 Paste</button>
-            <button class="toolBtn" type="button">⬆ Upload</button>
+            <button class="toolBtn" id="uploadBtn" type="button">⬆ Upload</button>
+<input
+  type="file"
+  id="fileInput"
+  accept=".png,.jpg,.jpeg,.pdf,.txt"
+  style="display:none;"
+/>
           </div>
 
+          
           <div class="meta">
             <div class="progress">
               <div id="progressFill"></div>
@@ -72,6 +79,8 @@
             <span id="charCountText">Characters: 0 out of 500</span>
           </div>
         </div>
+
+        <div id="fileStatus" class="fileStatus">No file selected</div>
 
         <div class="ctaRow">
           <button class="cta" id="openTermsBtn" type="button">Start solving</button>
@@ -543,6 +552,28 @@
   const pasteBtn = document.getElementById("pasteBtn");
   const charCountText = document.getElementById("charCountText");
   const progressFill = document.getElementById("progressFill");
+
+const uploadBtn = document.getElementById("uploadBtn");
+const fileInput = document.getElementById("fileInput");
+const fileStatus = document.getElementById("fileStatus");
+
+uploadBtn.addEventListener("click", () => {
+  fileInput.click();
+});
+
+fileInput.addEventListener("change", () => {
+  const file = fileInput.files[0];
+
+  if (!file) {
+    fileStatus.textContent = "No file selected";
+    return;
+  }
+
+  const fileName = file.name;
+  const fileSizeKB = (file.size / 1024).toFixed(1);
+
+  fileStatus.textContent = `Selected: ${fileName} (${fileSizeKB} KB)`;
+});
 
   function openViewTermsModal() {
     termsModal.classList.add("show");
