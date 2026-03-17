@@ -1,55 +1,69 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Nice! You Avoided It — Digital Literacy Demo</title>
-  <link rel="stylesheet" href="./styles.css?v=10" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Good Choice — SolveSmart AI</title>
+  <link rel="stylesheet" href="styles.css?v=140" />
 </head>
 <body>
 
-  <div class="nav">
+  <header class="nav">
     <div class="brand">
-      <div class="logo">◆</div>
-      <div>Awareness Demo</div>
+      <div class="logoMark">◆</div>
+      <div class="brandText">
+        <span class="name">Awareness Demo</span>
+      </div>
     </div>
 
     <div class="navActions">
-      <a class="btn btnGhost" href="index.html">Restart</a>
+      <a href="index.html" class="btn btnGhost">Restart</a>
     </div>
-  </div>
+  </header>
 
-  <div class="wrap">
-    <div class="pageCard">
-      <h1 class="pageTitle">Awesome — you avoided it 👏</h1>
-      <p class="pageSub">
-        That pause matters. Many scams work because people click fast. You chose not to accept and protected yourself.
-      </p>
-
-      <div class="callout green">
-        <b>Why this was smart:</b> You didn’t give quick consent under pressure. In real situations, this prevents risky redirects, tracking, and data collection.
+  <main class="wrap">
+    <section class="resultCard safeResultCard">
+      <div class="resultHero">
+        <div class="resultIcon safeIcon">✅</div>
+        <div>
+          <h1 class="resultTitle">Good choice.</h1>
+          <p class="resultSubtitle">
+            You slowed down and chose not to accept immediately. That small pause is one of the best digital safety habits you can build.
+          </p>
+        </div>
       </div>
 
-      <hr class="hr"/>
+      <div class="resultAlert safeAlert">
+        <strong>What this means:</strong>
+        You did not give quick consent under pressure. In real situations, this helps protect your privacy, reduces risk, and gives you time to verify what a site is actually asking from you.
+      </div>
 
-      <h2 style="margin:0 0 8px;">Red flags you avoided</h2>
-      <ul class="list">
-        <li><b>Pressure to agree</b> without clear explanation</li>
-        <li><b>Vague permissions</b> and unclear data usage</li>
-        <li><b>Trust-by-design</b> (professional UI that looks “safe”)</li>
-        <li><b>Habit-clicking</b> just to continue</li>
-      </ul>
+      <div class="resultSection">
+        <h2>Smart habits you used</h2>
+        <ul class="resultList">
+          <li><strong>Pause before clicking:</strong> you avoided automatic “Agree” behavior.</li>
+          <li><strong>Question the request:</strong> you recognized that terms and permissions matter.</li>
+          <li><strong>Protect your data:</strong> not every polished interface is safe.</li>
+          <li><strong>Choose awareness over speed:</strong> scams often succeed when people move too fast.</li>
+        </ul>
+      </div>
+
+      <div class="resultSection">
+        <h2>Keep doing this online</h2>
+        <ul class="resultList">
+          <li>Read what a site is asking before granting access.</li>
+          <li>Check whether the request feels necessary or suspicious.</li>
+          <li>Be careful with popups that create urgency.</li>
+          <li>Take a few extra seconds before clicking “Continue” or “Accept”.</li>
+        </ul>
+      </div>
 
       <div class="rowBtns">
-        <a class="btn btnPrimary" href="terms.html">Try the other choice</a>
-        <a class="btn btnGhost" href="index.html">Back to home</a>
+        <a href="index.html" class="btn btnPrimary">Back Home</a>
+        <a href="caught.html" class="btn btnGhost">See the Other Outcome</a>
       </div>
-
-      <div class="small">
-        Digital Literacy takeaway: Use the “10-second rule” — pause, check the URL, scan for red flags, then decide.
-      </div>
-    </div>
-  </div>
+    </section>
+  </main>
 
 </body>
 </html>
