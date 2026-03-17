@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SolveSmart AI – AI Homework Helper</title>
-  <link rel="stylesheet" href="styles.css?v=110" />
+  <link rel="stylesheet" href="styles.css?v=111" />
 </head>
 <body>
 
@@ -63,15 +63,14 @@
           <div class="toolGroup">
             <button class="toolBtn" id="pasteBtn" type="button">📋 Paste</button>
             <button class="toolBtn" id="uploadBtn" type="button">⬆ Upload</button>
-<input
-  type="file"
-  id="fileInput"
-  accept=".png,.jpg,.jpeg,.pdf,.txt"
-  style="display:none;"
-/>
+            <input
+              type="file"
+              id="fileInput"
+              accept=".png,.jpg,.jpeg,.pdf,.txt"
+              style="display:none;"
+            />
           </div>
 
-          
           <div class="meta">
             <div class="progress">
               <div id="progressFill"></div>
@@ -89,41 +88,41 @@
     </section>
   </main>
 
-<!-- NAME MODAL -->
-<div class="modalOverlay" id="nameModal">
-  <div class="modalBox startModalBox">
-    <button class="modalCloseBtn" id="closeNameModalBtn" type="button" aria-label="Close">
-      ✕
-    </button>
+  <!-- NAME MODAL -->
+  <div class="modalOverlay" id="nameModal">
+    <div class="modalBox startModalBox">
+      <button class="modalCloseBtn" id="closeNameModalBtn" type="button" aria-label="Close">
+        ✕
+      </button>
 
-    <div class="modalHeader">
-      <div class="modalIcon">👤</div>
-      <div>
-        <h2 class="modalTitle">Enter Your Name</h2>
-        <p class="modalSub">Please enter your name before continuing.</p>
+      <div class="modalHeader">
+        <div class="modalIcon">👤</div>
+        <div>
+          <h2 class="modalTitle">Enter Your Name</h2>
+          <p class="modalSub">Please enter your name before continuing.</p>
+        </div>
       </div>
-    </div>
 
-    <div class="termsScrollBox" style="max-height:none;">
-      <div class="termsContent">
-        <label for="userNameInput" style="display:block; margin-bottom:10px; color:#f3f6ff; font-weight:700;">
-          Name
-        </label>
-        <input
-          id="userNameInput"
-          type="text"
-          placeholder="Enter your full name"
-          style="width:100%; padding:14px; border-radius:12px; border:1px solid rgba(255,255,255,0.10); background:#182133; color:#f3f6ff; font-size:15px; outline:none;"
-        />
+      <div class="termsScrollBox" style="max-height:none;">
+        <div class="termsContent">
+          <label for="userNameInput" style="display:block; margin-bottom:10px; color:#f3f6ff; font-weight:700;">
+            Name
+          </label>
+          <input
+            id="userNameInput"
+            type="text"
+            placeholder="Enter your full name"
+            style="width:100%; padding:14px; border-radius:12px; border:1px solid rgba(255,255,255,0.10); background:#182133; color:#f3f6ff; font-size:15px; outline:none;"
+          />
+        </div>
       </div>
-    </div>
 
-    <div class="modalActions">
-      <button class="btn btnPrimary" id="continueNameBtn" type="button">Continue</button>
-      <button class="btn btnGhost" id="cancelNameBtn" type="button">Cancel</button>
+      <div class="modalActions">
+        <button class="btn btnPrimary" id="continueNameBtn" type="button">Continue</button>
+        <button class="btn btnGhost" id="cancelNameBtn" type="button">Cancel</button>
+      </div>
     </div>
   </div>
-</div>
 
   <!-- VIEW-ONLY TERMS MODAL -->
   <div class="modalOverlay" id="termsModal">
@@ -524,236 +523,250 @@
   </div>
 
   <script>
-  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw5wlkl3vSU-3DJbMQnA-ZYswO7OxOUkAQofGP7U5xMl4PtoXwAepsFlcX9OTUtzxM/exec";
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw5wlkl3vSU-3DJbMQnA-ZYswO7OxOUkAQofGP7U5xMl4PtoXwAepsFlcX9OTUtzxM/exec";
 
-  let currentUserName = "";
+    let currentUserName = "";
 
-  const viewTermsBtn = document.getElementById("viewTermsBtn");
-  const openTermsBtn = document.getElementById("openTermsBtn");
+    const viewTermsBtn = document.getElementById("viewTermsBtn");
+    const openTermsBtn = document.getElementById("openTermsBtn");
 
-  const termsModal = document.getElementById("termsModal");
-  const closeTermsModalBtn = document.getElementById("closeTermsModalBtn");
+    const termsModal = document.getElementById("termsModal");
+    const closeTermsModalBtn = document.getElementById("closeTermsModalBtn");
 
-  const nameModal = document.getElementById("nameModal");
-  const closeNameModalBtn = document.getElementById("closeNameModalBtn");
-  const continueNameBtn = document.getElementById("continueNameBtn");
-  const cancelNameBtn = document.getElementById("cancelNameBtn");
-  const userNameInput = document.getElementById("userNameInput");
+    const nameModal = document.getElementById("nameModal");
+    const closeNameModalBtn = document.getElementById("closeNameModalBtn");
+    const continueNameBtn = document.getElementById("continueNameBtn");
+    const cancelNameBtn = document.getElementById("cancelNameBtn");
+    const userNameInput = document.getElementById("userNameInput");
 
-  const startModal = document.getElementById("startModal");
-  const closeStartModalBtn = document.getElementById("closeStartModalBtn");
-  const cancelStartBtn = document.getElementById("cancelStartBtn");
-  const agreeBtn = document.getElementById("agreeBtn");
-  const declineBtn = document.getElementById("declineBtn");
+    const startModal = document.getElementById("startModal");
+    const closeStartModalBtn = document.getElementById("closeStartModalBtn");
+    const cancelStartBtn = document.getElementById("cancelStartBtn");
+    const agreeBtn = document.getElementById("agreeBtn");
+    const declineBtn = document.getElementById("declineBtn");
 
-  const subjectSelect = document.getElementById("subjectSelect");
-  const levelSelect = document.getElementById("levelSelect");
-  const questionInput = document.getElementById("questionInput");
-  const pasteBtn = document.getElementById("pasteBtn");
-  const charCountText = document.getElementById("charCountText");
-  const progressFill = document.getElementById("progressFill");
+    const subjectSelect = document.getElementById("subjectSelect");
+    const levelSelect = document.getElementById("levelSelect");
+    const questionInput = document.getElementById("questionInput");
+    const pasteBtn = document.getElementById("pasteBtn");
+    const charCountText = document.getElementById("charCountText");
+    const progressFill = document.getElementById("progressFill");
 
-const uploadBtn = document.getElementById("uploadBtn");
-const fileInput = document.getElementById("fileInput");
-const fileStatus = document.getElementById("fileStatus");
+    const uploadBtn = document.getElementById("uploadBtn");
+    const fileInput = document.getElementById("fileInput");
+    const fileStatus = document.getElementById("fileStatus");
 
-uploadBtn.addEventListener("click", () => {
-  fileInput.click();
-});
+    uploadBtn.addEventListener("click", () => {
+      fileInput.click();
+    });
 
-fileInput.addEventListener("change", () => {
-  const file = fileInput.files[0];
+    fileInput.addEventListener("change", () => {
+      const file = fileInput.files[0];
 
-  if (!file) {
-    fileStatus.textContent = "No file selected";
-    return;
-  }
-
-  const fileName = file.name;
-  const fileSizeKB = (file.size / 1024).toFixed(1);
-
-  fileStatus.textContent = `Selected: ${fileName} (${fileSizeKB} KB)`;
-});
-
-  function openViewTermsModal() {
-    termsModal.classList.add("show");
-    document.body.classList.add("modalOpen");
-  }
-
-  function closeViewTermsModal() {
-    termsModal.classList.remove("show");
-    document.body.classList.remove("modalOpen");
-  }
-
-  function openNameModal() {
-    nameModal.classList.add("show");
-    document.body.classList.add("modalOpen");
-    setTimeout(() => userNameInput.focus(), 100);
-  }
-
-  function closeNameModal() {
-    nameModal.classList.remove("show");
-    document.body.classList.remove("modalOpen");
-  }
-
-  function openStartModal() {
-    startModal.classList.add("show");
-    document.body.classList.add("modalOpen");
-  }
-
-  function closeStartModal() {
-    startModal.classList.remove("show");
-    document.body.classList.remove("modalOpen");
-  }
-
-  function updatePlaceholder() {
-    const subject = subjectSelect.value;
-    const level = levelSelect.value;
-
-    if (subject === "mathematics") {
-      questionInput.placeholder = "Enter your math problem to solve...";
-    } else if (subject === "computer-science") {
-      questionInput.placeholder = "Paste your coding or CS question...";
-    } else if (subject === "biology") {
-      questionInput.placeholder = "Enter your biology question...";
-    } else if (subject === "chemistry") {
-      questionInput.placeholder = "Enter your chemistry problem...";
-    } else if (subject === "physics") {
-      questionInput.placeholder = "Enter your physics problem...";
-    } else if (subject === "english") {
-      questionInput.placeholder = "Enter your reading or writing question...";
-    } else if (subject === "history") {
-      questionInput.placeholder = "Enter your history question...";
-    } else if (subject === "economics") {
-      questionInput.placeholder = "Enter your economics question...";
-    } else {
-      questionInput.placeholder = "Enter your homework problem to solve...";
-    }
-
-    if (level === "middle-school" && subject === "") {
-      questionInput.placeholder = "Enter your middle school homework question...";
-    }
-    if (level === "high-school" && subject === "") {
-      questionInput.placeholder = "Enter your high school homework question...";
-    }
-    if (level === "graduate" && subject === "") {
-      questionInput.placeholder = "Enter your advanced academic question...";
-    }
-  }
-
-  function updateCharacterCount() {
-    let text = questionInput.value;
-
-    if (text.length > 500) {
-      text = text.substring(0, 500);
-      questionInput.value = text;
-    }
-
-    const length = text.length;
-    const percent = (length / 500) * 100;
-
-    charCountText.textContent = `Characters: ${length} out of 500`;
-    progressFill.style.width = `${percent}%`;
-  }
-
-  async function handlePaste() {
-    try {
-      const text = await navigator.clipboard.readText();
-
-      if (!text) {
-        alert("Clipboard is empty.");
+      if (!file) {
+        fileStatus.textContent = "No file selected";
         return;
       }
 
-      questionInput.value = text;
-      questionInput.focus();
-      updateCharacterCount();
-    } catch (error) {
-      alert("Paste failed. Please allow clipboard access and try again.");
-      console.error("Clipboard paste error:", error);
-    }
-  }
+      const fileName = file.name;
+      const fileSizeKB = (file.size / 1024).toFixed(1);
 
-  async function logAction(action) {
-  try {
-    await fetch(SCRIPT_URL, {
-      method: "POST",
-      mode: "no-cors",
-      headers: {
-        "Content-Type": "text/plain"
-      },
-      body: JSON.stringify({
+      fileStatus.textContent = `Selected: ${fileName} (${fileSizeKB} KB)`;
+    });
+
+    function openViewTermsModal() {
+      termsModal.classList.add("show");
+      document.body.classList.add("modalOpen");
+    }
+
+    function closeViewTermsModal() {
+      termsModal.classList.remove("show");
+      document.body.classList.remove("modalOpen");
+    }
+
+    function openNameModal() {
+      nameModal.classList.add("show");
+      document.body.classList.add("modalOpen");
+      setTimeout(() => userNameInput.focus(), 100);
+    }
+
+    function closeNameModal() {
+      nameModal.classList.remove("show");
+      document.body.classList.remove("modalOpen");
+    }
+
+    function openStartModal() {
+      startModal.classList.add("show");
+      document.body.classList.add("modalOpen");
+    }
+
+    function closeStartModal() {
+      startModal.classList.remove("show");
+      document.body.classList.remove("modalOpen");
+    }
+
+    function updatePlaceholder() {
+      const subject = subjectSelect.value;
+      const level = levelSelect.value;
+
+      if (subject === "mathematics") {
+        questionInput.placeholder = "Enter your math problem to solve...";
+      } else if (subject === "computer-science") {
+        questionInput.placeholder = "Paste your coding or CS question...";
+      } else if (subject === "biology") {
+        questionInput.placeholder = "Enter your biology question...";
+      } else if (subject === "chemistry") {
+        questionInput.placeholder = "Enter your chemistry problem...";
+      } else if (subject === "physics") {
+        questionInput.placeholder = "Enter your physics problem...";
+      } else if (subject === "english") {
+        questionInput.placeholder = "Enter your reading or writing question...";
+      } else if (subject === "history") {
+        questionInput.placeholder = "Enter your history question...";
+      } else if (subject === "economics") {
+        questionInput.placeholder = "Enter your economics question...";
+      } else {
+        questionInput.placeholder = "Enter your homework problem to solve...";
+      }
+
+      if (level === "middle-school" && subject === "") {
+        questionInput.placeholder = "Enter your middle school homework question...";
+      }
+      if (level === "high-school" && subject === "") {
+        questionInput.placeholder = "Enter your high school homework question...";
+      }
+      if (level === "graduate" && subject === "") {
+        questionInput.placeholder = "Enter your advanced academic question...";
+      }
+    }
+
+    function updateCharacterCount() {
+      let text = questionInput.value;
+
+      if (text.length > 500) {
+        text = text.substring(0, 500);
+        questionInput.value = text;
+      }
+
+      const length = text.length;
+      const percent = (length / 500) * 100;
+
+      charCountText.textContent = `Characters: ${length} out of 500`;
+      progressFill.style.width = `${percent}%`;
+    }
+
+    async function handlePaste() {
+      try {
+        const text = await navigator.clipboard.readText();
+
+        if (!text) {
+          alert("Clipboard is empty.");
+          return;
+        }
+
+        questionInput.value = text;
+        questionInput.focus();
+        updateCharacterCount();
+      } catch (error) {
+        alert("Paste failed. Please allow clipboard access and try again.");
+        console.error("Clipboard paste error:", error);
+      }
+    }
+
+    function logAction(action) {
+      const payload = JSON.stringify({
         name: currentUserName,
         action: action,
         subject: subjectSelect.options[subjectSelect.selectedIndex].text,
         level: levelSelect.options[levelSelect.selectedIndex].text
-      })
+      });
+
+      try {
+        if (navigator.sendBeacon) {
+          const blob = new Blob([payload], { type: "text/plain;charset=UTF-8" });
+          navigator.sendBeacon(SCRIPT_URL, blob);
+        } else {
+          fetch(SCRIPT_URL, {
+            method: "POST",
+            mode: "no-cors",
+            headers: {
+              "Content-Type": "text/plain"
+            },
+            body: payload,
+            keepalive: true
+          }).catch((error) => {
+            console.error("Logging failed:", error);
+          });
+        }
+      } catch (error) {
+        console.error("Logging failed:", error);
+      }
+    }
+
+    subjectSelect.addEventListener("change", updatePlaceholder);
+    levelSelect.addEventListener("change", updatePlaceholder);
+    questionInput.addEventListener("input", updateCharacterCount);
+    pasteBtn.addEventListener("click", handlePaste);
+
+    viewTermsBtn.addEventListener("click", openViewTermsModal);
+
+    openTermsBtn.addEventListener("click", () => {
+      openNameModal();
     });
-  } catch (error) {
-    console.error("Logging failed:", error);
-  }
-}
 
-  subjectSelect.addEventListener("change", updatePlaceholder);
-  levelSelect.addEventListener("change", updatePlaceholder);
-  questionInput.addEventListener("input", updateCharacterCount);
-  pasteBtn.addEventListener("click", handlePaste);
+    continueNameBtn.addEventListener("click", () => {
+      const enteredName = userNameInput.value.trim();
 
-  viewTermsBtn.addEventListener("click", openViewTermsModal);
+      if (!enteredName) {
+        alert("Please enter your name before continuing.");
+        return;
+      }
 
-  openTermsBtn.addEventListener("click", () => {
-    openNameModal();
-  });
-
-  continueNameBtn.addEventListener("click", () => {
-    const enteredName = userNameInput.value.trim();
-
-    if (!enteredName) {
-      alert("Please enter your name before continuing.");
-      return;
-    }
-
-    currentUserName = enteredName;
-    closeNameModal();
-    openStartModal();
-  });
-
-  closeTermsModalBtn.addEventListener("click", closeViewTermsModal);
-  closeNameModalBtn.addEventListener("click", closeNameModal);
-  cancelNameBtn.addEventListener("click", closeNameModal);
-  closeStartModalBtn.addEventListener("click", closeStartModal);
-  cancelStartBtn.addEventListener("click", closeStartModal);
-
-  agreeBtn.addEventListener("click", async () => {
-    await logAction("agree");
-    window.location.href = "caught.html";
-  });
-
-  declineBtn.addEventListener("click", async () => {
-    await logAction("do_not_agree");
-    window.location.href = "safe.html";
-  });
-
-  termsModal.addEventListener("click", (e) => {
-    if (e.target === termsModal) {
-      closeViewTermsModal();
-    }
-  });
-
-  nameModal.addEventListener("click", (e) => {
-    if (e.target === nameModal) {
+      currentUserName = enteredName;
       closeNameModal();
-    }
-  });
+      openStartModal();
+    });
 
-  startModal.addEventListener("click", (e) => {
-    if (e.target === startModal) {
-      closeStartModal();
-    }
-  });
+    closeTermsModalBtn.addEventListener("click", closeViewTermsModal);
+    closeNameModalBtn.addEventListener("click", closeNameModal);
+    cancelNameBtn.addEventListener("click", closeNameModal);
+    closeStartModalBtn.addEventListener("click", closeStartModal);
+    cancelStartBtn.addEventListener("click", closeStartModal);
 
-  updateCharacterCount();
-</script>
+    agreeBtn.addEventListener("click", () => {
+      agreeBtn.disabled = true;
+      agreeBtn.textContent = "Processing...";
+      logAction("agree");
+      window.location.href = "caught.html";
+    });
+
+    declineBtn.addEventListener("click", () => {
+      declineBtn.disabled = true;
+      declineBtn.textContent = "Processing...";
+      logAction("do_not_agree");
+      window.location.href = "safe.html";
+    });
+
+    termsModal.addEventListener("click", (e) => {
+      if (e.target === termsModal) {
+        closeViewTermsModal();
+      }
+    });
+
+    nameModal.addEventListener("click", (e) => {
+      if (e.target === nameModal) {
+        closeNameModal();
+      }
+    });
+
+    startModal.addEventListener("click", (e) => {
+      if (e.target === startModal) {
+        closeStartModal();
+      }
+    });
+
+    updateCharacterCount();
+  </script>
 
 </body>
 </html>
