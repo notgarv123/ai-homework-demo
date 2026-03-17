@@ -1,174 +1,625 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<title>SolveSmart AI</title>
-
-<link rel="stylesheet" href="./styles.css?v=1">
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SolveSmart AI – AI Homework Helper</title>
+  <link rel="stylesheet" href="styles.css?v=110" />
 </head>
 <body>
-  <div class="container">
 
-    <div class="nav">
-      <div class="brand">
-        <div class="logoMark" aria-hidden="true">
-          <!-- simple “brain chip” icon -->
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-            <path d="M9 4a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3" stroke="rgba(255,255,255,0.95)" stroke-width="2" stroke-linecap="round"/>
-            <path d="M15 4a3 3 0 0 1 3 3v10a3 3 0 0 1-3 3" stroke="rgba(255,255,255,0.95)" stroke-width="2" stroke-linecap="round"/>
-            <path d="M9 8h6M9 12h6M9 16h6" stroke="rgba(255,255,255,0.75)" stroke-width="2" stroke-linecap="round"/>
-          </svg>
-        </div>
-        <div class="brandText">
-          <div class="name">SolveSmart AI</div>
-          <div class="tag">Instant explanations • Step-by-step</div>
-        </div>
-        <span class="badge">Beta</span>
+  <header class="nav">
+    <div class="brand">
+      <div class="logoMark">◆</div>
+      <div class="brandText">
+        <span class="name">SolveSmart AI</span>
       </div>
-
-      <span class="badge">Math • CS • Writing • Science</span>
     </div>
 
-    <div class="card cardPad">
-      <div class="grid">
+    <div class="navActions">
+      <button class="btn btnGhost" id="viewTermsBtn" type="button">View Terms</button>
+    </div>
+  </header>
 
-        <!-- Left: hero + fake solver -->
+  <main class="wrap">
+    <section class="hero">
+      <h1>Make homework a breeze<br>with an AI homework helper</h1>
+      <p>
+        Quickly get step-by-step explanations for challenging questions.
+      </p>
+    </section>
+
+    <section class="solver">
+      <div class="solverTop">
+        <select class="selectMenu" id="subjectSelect">
+          <option value="">Any subject</option>
+          <option value="mathematics">Mathematics</option>
+          <option value="computer-science">Computer Science</option>
+          <option value="biology">Biology</option>
+          <option value="chemistry">Chemistry</option>
+          <option value="physics">Physics</option>
+          <option value="english">English</option>
+          <option value="history">History</option>
+          <option value="economics">Economics</option>
+        </select>
+
+        <select class="selectMenu" id="levelSelect">
+          <option value="">College</option>
+          <option value="middle-school">Middle School</option>
+          <option value="high-school">High School</option>
+          <option value="college">College</option>
+          <option value="graduate">Graduate</option>
+        </select>
+      </div>
+
+      <div class="solverArea">
+        <textarea
+          class="input"
+          id="questionInput"
+          placeholder="Enter your homework problem to solve..."
+        ></textarea>
+
+        <div class="toolsRow">
+          <div class="toolGroup">
+            <button class="toolBtn" id="pasteBtn" type="button">📋 Paste</button>
+            <button class="toolBtn" type="button">⬆ Upload</button>
+          </div>
+
+          <div class="meta">
+            <div class="progress">
+              <div id="progressFill"></div>
+            </div>
+            <span id="charCountText">Characters: 0 out of 500</span>
+          </div>
+        </div>
+
+        <div class="ctaRow">
+          <button class="cta" id="openTermsBtn" type="button">Start solving</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- VIEW-ONLY TERMS MODAL -->
+  <div class="modalOverlay" id="termsModal">
+    <div class="modalBox termsModalLarge">
+      <button class="modalCloseBtn" id="closeTermsModalBtn" type="button" aria-label="Close terms">
+        ✕
+      </button>
+
+      <div class="modalHeader">
+        <div class="modalIcon">📄</div>
         <div>
-          <h1>Homework help that actually explains</h1>
+          <h2 class="modalTitle">Terms & Conditions</h2>
+          <p class="modalSub">Please review these terms before continuing to SolveSmart AI.</p>
+        </div>
+      </div>
+
+      <div class="termsMetaRow">
+        <span class="termsBadge">Last Updated: March 10, 2026</span>
+        <span class="termsBadge subtle">View only</span>
+      </div>
+
+      <div class="termsScrollBox">
+        <div class="termsContent">
+          <h3>Terms and Conditions</h3>
+          <p><strong>Last Updated:</strong> March 10, 2026</p>
+
           <p>
-            Paste a question, choose your subject, and get a clear step-by-step explanation.
-            <span class="smallNote">Demo UI for Digital Literacy awareness.</span>
+            Welcome to this website (the “Site”). These Terms and Conditions (“Terms”) govern access to and use of the Site and any services, content, features, or functionality made available through it. By accessing or using the Site, you agree to be bound by these Terms. If you do not agree with these Terms, you should discontinue use of the Site.
           </p>
 
-          <div class="solverBox">
-            <div class="fakeTabs">
-              <div class="tab active">Solver</div>
-              <div class="tab">Explain like I’m 5</div>
-              <div class="tab">Show steps</div>
-              <div class="tab">Check my answer</div>
-            </div>
+          <h4>1. Acceptance of Terms</h4>
+          <p>
+            By accessing the Site, you represent that you have read and understood these Terms and that you agree to comply with them. Continued use of the Site following any update to these Terms constitutes acceptance of the revised Terms.
+          </p>
+          <p>
+            If you are under the age of 18, use of the Site must occur under the supervision of a parent, guardian, or other responsible adult capable of understanding contractual agreements and basic internet etiquette.
+          </p>
+          <p>
+            Use of the Site must occur within the ordinary flow of chronological time. Users agree not to exploit hypothetical or experimental time-travel technologies to retroactively modify discussions, reveal unreleased plot developments, or otherwise influence past versions of the Site.
+          </p>
 
-            <label class="smallNote">Your question</label>
-            <input class="fakeInput" placeholder="e.g., Solve: ∫ (2x)/(x^2+1) dx" />
+          <h4>2. Changes to Terms</h4>
+          <p>
+            We reserve the right to modify these Terms at any time. Updates will be posted on this page with a revised “Last Updated” date. Continued use of the Site after changes are posted constitutes acceptance of those changes.
+          </p>
+          <p>
+            Users are encouraged to review these Terms periodically. While the Site cannot compel anyone to read lengthy policy documents in their entirety, doing so may prevent misunderstandings regarding permitted uses of the Site or unexpected clauses relating to wildlife, chronology, or sandwiches.
+          </p>
 
-            <div class="row2">
-              <select class="select">
-                <option>Subject: Mathematics</option>
-                <option>Subject: Computer Science</option>
-                <option>Subject: Chemistry</option>
-                <option>Subject: Writing</option>
-              </select>
+          <h4>3. Use of the Site</h4>
+          <p>You agree to use the Site only for lawful purposes and in accordance with these Terms.</p>
+          <p>You agree not to:</p>
+          <ul>
+            <li>violate any applicable laws or regulations</li>
+            <li>attempt to gain unauthorized access to the Site or its systems</li>
+            <li>introduce malicious code, viruses, or automated scraping tools</li>
+            <li>impersonate another person or entity</li>
+          </ul>
+          <p>
+            Accounts may not be created, maintained, or operated by non-human actors, including animals such as raccoons, ducks, or similarly determined wildlife, even if such animals appear capable of interacting with keyboards or touchscreens.
+          </p>
+          <p>
+            The Site reserves the right to suspend accounts exhibiting behavior consistent with automated control, external manipulation, or unusually coordinated posting patterns suggestive of either bot activity or highly motivated squirrels.
+          </p>
 
-              <select class="select">
-                <option>Level: College</option>
-                <option>Level: High School</option>
-                <option>Level: Middle School</option>
-              </select>
-            </div>
+          <h4>4. User Accounts</h4>
+          <p>
+            Certain features of the Site may require the creation of a user account. You agree to provide accurate and complete information when creating an account and to maintain the security of your login credentials.
+          </p>
+          <p>
+            You are responsible for all activity occurring under your account, whether performed by you or by any other party with access to your credentials.
+          </p>
+          <p>
+            Accounts that appear to be accessed simultaneously from incompatible locations or timelines may be temporarily restricted while system integrity is reviewed.
+          </p>
+          <p>
+            If you suspect unauthorized access to your account, you should notify the Site promptly so appropriate measures can be taken.
+          </p>
 
-            <div class="btnRow">
-              <a class="btn btnPrimary" href="terms.html">
-                <span aria-hidden="true">⚡</span>
-                Start Solving
-              </a>
-              <a class="btn btnGhost" href="terms.html">
-                <span aria-hidden="true">📄</span>
-                View Terms
-              </a>
-            </div>
+          <h4>5. Intellectual Property</h4>
+          <p>
+            All content available on the Site, including text, graphics, logos, images, software, and design elements, is the property of the Site or its licensors and is protected by applicable intellectual property laws.
+          </p>
+          <p>
+            You may not reproduce, distribute, modify, reverse engineer, or create derivative works from Site content without prior written permission.
+          </p>
+          <p>
+            Users are permitted to quote brief excerpts for commentary, discussion, or educational purposes. However, posting extended theatrical monologues unrelated to the subject matter—particularly those written in Elizabethan English—may be moderated if they disrupt normal discussion.
+          </p>
 
-            <p class="smallNote">
-              To begin solving homework, please accept the Terms & Conditions.
-              (No data is saved in this demo.)
-            </p>
-          </div>
+          <h4>6. User-Generated Content</h4>
+          <p>
+            Users may submit content such as comments, posts, feedback, or other materials (“User Content”).
+          </p>
+          <p>
+            By submitting User Content, you grant the Site a worldwide, non-exclusive, royalty-free license to use, reproduce, distribute, and display such content in connection with operating the Site.
+          </p>
+          <p>
+            User Content must not include material that is unlawful, abusive, misleading, or intentionally disruptive to community discussion. Content that attempts to conduct ritual summoning, arcane spellcasting, or other forms of mystical interference within comment sections may be removed at the discretion of moderators.
+          </p>
 
-          <div class="kpis">
-            <div class="kpi">
-              <div class="big">4.9★</div>
-              <div class="small">student rating</div>
-            </div>
-            <div class="kpi">
-              <div class="big">60s</div>
-              <div class="small">average solve time</div>
-            </div>
-            <div class="kpi">
-              <div class="big">Step-by-step</div>
-              <div class="small">clear explanations</div>
-            </div>
-            <div class="kpi">
-              <div class="big">No login</div>
-              <div class="small">quick access</div>
-            </div>
-          </div>
+          <h4>7. Community Standards</h4>
+          <p>
+            Users are expected to engage respectfully with others. Harassment, personal attacks, hate speech, and persistent trolling are prohibited.
+          </p>
+          <p>
+            Moderators may remove content or restrict access when user behavior interferes with the productive functioning of the Site.
+          </p>
+          <p>
+            Behavior patterns that may trigger moderation review include repeated use of excessive capitalization, persistent attempts to train animals to operate accounts, or claims that the user possesses knowledge originating from future historical events.
+          </p>
 
-          <div class="footer">Educational awareness demo for Digital Literacy — UC Merced</div>
-        </div>
+          <h4>8. Service Availability</h4>
+          <p>
+            The Site is provided on an “as available” basis. We do not guarantee that the Site will be uninterrupted or free from errors.
+          </p>
+          <p>
+            Service interruptions may occur due to scheduled maintenance, technical failures, infrastructure disruptions, or external conditions affecting internet connectivity.
+          </p>
+          <p>
+            External disruptions may include severe weather events, hardware failures, fiber network damage caused by wildlife, or other circumstances beyond reasonable operational control.
+          </p>
+          <p>
+            In rare situations where technical failures appear to involve unexplained phenomena inconsistent with conventional computing systems, the Site reserves the right to consult qualified technical specialists before restoring service.
+          </p>
 
-        <!-- Right: “graphics” panel -->
-        <div class="illus">
-          <div class="illusTitle">
-            <h2 style="margin:0;">How it works</h2>
-            <span class="badge">Preview</span>
-          </div>
+          <h4>9. Dispute Resolution</h4>
+          <p>
+            If a dispute arises between users or between a user and the Site, the parties are encouraged to seek informal resolution before pursuing formal legal remedies.
+          </p>
+          <p>
+            Where appropriate and mutually agreed upon, discussions may occur in an informal setting designed to promote constructive dialogue. Historical evidence suggests that cooperative conversation conducted over shared food may improve dispute resolution outcomes, though the Site does not require any specific menu item.
+          </p>
+          <p>
+            If informal resolution is unsuccessful, disputes shall be handled in accordance with applicable law and appropriate legal procedures.
+          </p>
 
-          <!-- SVG illustration (no images needed) -->
-          <svg width="100%" viewBox="0 0 520 360" fill="none" xmlns="http://www.w3.org/2000/svg" style="border-radius:16px;">
-            <defs>
-              <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
-                <stop stop-color="rgba(110,168,255,0.95)"/>
-                <stop offset="1" stop-color="rgba(139,92,246,0.9)"/>
-              </linearGradient>
-            </defs>
+          <h4>10. Disclaimer of Warranties</h4>
+          <p>
+            The Site and its services are provided “as is” and “as available.” To the fullest extent permitted by law, we disclaim all warranties, express or implied, including warranties of merchantability, fitness for a particular purpose, and non-infringement.
+          </p>
+          <p>
+            We do not guarantee that the Site will always function without interruption, that all information will be completely accurate, or that internet infrastructure will behave predictably at all times.
+          </p>
 
-            <!-- background -->
-            <rect x="0" y="0" width="520" height="360" rx="18" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.10)"/>
+          <h4>11. Limitation of Liability</h4>
+          <p>
+            To the fullest extent permitted by law, the Site and its operators shall not be liable for indirect, incidental, consequential, or punitive damages arising from use of the Site.
+          </p>
+          <p>
+            This limitation applies even if the Site has been advised of the possibility of such damages.
+          </p>
+          <p>
+            The Site is not responsible for unrelated household events that may occur during or after internet use, including misplaced personal items, missing socks following laundry cycles, or other domestic anomalies.
+          </p>
 
-            <!-- mock app window -->
-            <rect x="40" y="50" width="440" height="260" rx="16" fill="rgba(11,18,32,0.55)" stroke="rgba(255,255,255,0.12)"/>
-            <circle cx="70" cy="80" r="6" fill="rgba(255,255,255,0.18)"/>
-            <circle cx="92" cy="80" r="6" fill="rgba(255,255,255,0.18)"/>
-            <circle cx="114" cy="80" r="6" fill="rgba(255,255,255,0.18)"/>
+          <h4>12. Third-Party Links</h4>
+          <p>
+            The Site may contain links to third-party websites or services. These links are provided for convenience and informational purposes only.
+          </p>
+          <p>
+            We do not control or endorse third-party websites and are not responsible for their content, policies, or operational practices.
+          </p>
+          <p>
+            Users access third-party sites at their own discretion and should review the applicable terms and policies of those sites.
+          </p>
 
-            <!-- left panel -->
-            <rect x="60" y="105" width="150" height="185" rx="12" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.10)"/>
-            <rect x="75" y="125" width="120" height="12" rx="6" fill="rgba(255,255,255,0.16)"/>
-            <rect x="75" y="150" width="95" height="10" rx="5" fill="rgba(255,255,255,0.10)"/>
-            <rect x="75" y="170" width="110" height="10" rx="5" fill="rgba(255,255,255,0.10)"/>
-            <rect x="75" y="190" width="80" height="10" rx="5" fill="rgba(255,255,255,0.10)"/>
-            <rect x="75" y="230" width="120" height="38" rx="10" fill="url(#g1)" opacity="0.85"/>
+          <h4>13. Termination</h4>
+          <p>
+            We reserve the right to suspend or terminate access to the Site at any time if a user violates these Terms or engages in behavior that disrupts the operation of the Site.
+          </p>
+          <p>
+            Termination decisions may consider patterns of misuse, including repeated policy violations, attempts to circumvent moderation systems, or coordinated efforts to introduce non-human participants into user discussions.
+          </p>
 
-            <!-- main chat -->
-            <rect x="230" y="105" width="230" height="185" rx="12" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.10)"/>
-            <rect x="245" y="125" width="160" height="12" rx="6" fill="rgba(255,255,255,0.16)"/>
-            <rect x="245" y="150" width="200" height="10" rx="5" fill="rgba(255,255,255,0.10)"/>
-            <rect x="245" y="170" width="175" height="10" rx="5" fill="rgba(255,255,255,0.10)"/>
-            <rect x="245" y="210" width="190" height="46" rx="12" fill="rgba(110,168,255,0.18)" stroke="rgba(110,168,255,0.35)"/>
-            <rect x="265" y="225" width="150" height="10" rx="5" fill="rgba(255,255,255,0.16)"/>
-            <rect x="265" y="242" width="120" height="10" rx="5" fill="rgba(255,255,255,0.12)"/>
+          <h4>14. Governing Law</h4>
+          <p>
+            These Terms shall be governed by and interpreted in accordance with the laws of the applicable jurisdiction.
+          </p>
+          <p>
+            Any disputes arising under these Terms shall be resolved in appropriate courts unless otherwise required by law.
+          </p>
 
-            <!-- floating chip icon -->
-            <rect x="375" y="35" width="90" height="60" rx="16" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.12)"/>
-            <path d="M405 55h30M405 65h30M405 75h30" stroke="rgba(255,255,255,0.55)" stroke-width="3" stroke-linecap="round"/>
-          </svg>
+          <h4>15. Severability</h4>
+          <p>
+            If any provision of these Terms is determined to be invalid or unenforceable, the remaining provisions shall remain in full force and effect.
+          </p>
 
-          <div class="callout" style="margin-top:12px;">
-            <h2 style="margin-bottom:8px;">What students love</h2>
-            <ul class="list">
-              <li><b>Clear explanations</b> instead of just answers</li>
-              <li><b>Fast feedback</b> when you’re stuck</li>
-              <li><b>Works across subjects</b> with step-by-step help</li>
-            </ul>
-          </div>
-
-          <p class="smallNote" style="margin-top:12px;">
-            Tip: Scam pages often look professional. Always pause before clicking “Agree.”
+          <h4>16. Entire Agreement</h4>
+          <p>
+            These Terms constitute the entire agreement between users and the Site regarding access to and use of the Site and supersede any prior agreements or understandings relating to the same subject matter.
           </p>
         </div>
-
       </div>
     </div>
-
   </div>
+
+  <!-- START SOLVING ACCEPT MODAL -->
+  <div class="modalOverlay" id="startModal">
+    <div class="modalBox startModalBox">
+      <button class="modalCloseBtn" id="closeStartModalBtn" type="button" aria-label="Close">
+        ✕
+      </button>
+
+      <div class="modalHeader">
+        <div class="modalIcon">⚠️</div>
+        <div>
+          <h2 class="modalTitle">Accept Terms to Continue</h2>
+          <p class="modalSub">To begin solving homework, you must accept the Terms & Conditions.</p>
+        </div>
+      </div>
+
+      <div class="termsMetaRow">
+        <span class="termsBadge">Last Updated: March 10, 2026</span>
+        <span class="termsBadge subtle">Required to continue</span>
+      </div>
+
+      <div class="termsScrollBox">
+        <div class="termsContent">
+          <h3>Terms and Conditions</h3>
+          <p><strong>Last Updated:</strong> March 10, 2026</p>
+
+          <p>
+            Welcome to this website (the “Site”). These Terms and Conditions (“Terms”) govern access to and use of the Site and any services, content, features, or functionality made available through it. By accessing or using the Site, you agree to be bound by these Terms. If you do not agree with these Terms, you should discontinue use of the Site.
+          </p>
+
+          <h4>1. Acceptance of Terms</h4>
+          <p>
+            By accessing the Site, you represent that you have read and understood these Terms and that you agree to comply with them. Continued use of the Site following any update to these Terms constitutes acceptance of the revised Terms.
+          </p>
+          <p>
+            If you are under the age of 18, use of the Site must occur under the supervision of a parent, guardian, or other responsible adult capable of understanding contractual agreements and basic internet etiquette.
+          </p>
+          <p>
+            Use of the Site must occur within the ordinary flow of chronological time. Users agree not to exploit hypothetical or experimental time-travel technologies to retroactively modify discussions, reveal unreleased plot developments, or otherwise influence past versions of the Site.
+          </p>
+
+          <h4>2. Changes to Terms</h4>
+          <p>
+            We reserve the right to modify these Terms at any time. Updates will be posted on this page with a revised “Last Updated” date. Continued use of the Site after changes are posted constitutes acceptance of those changes.
+          </p>
+          <p>
+            Users are encouraged to review these Terms periodically. While the Site cannot compel anyone to read lengthy policy documents in their entirety, doing so may prevent misunderstandings regarding permitted uses of the Site or unexpected clauses relating to wildlife, chronology, or sandwiches.
+          </p>
+
+          <h4>3. Use of the Site</h4>
+          <p>You agree to use the Site only for lawful purposes and in accordance with these Terms.</p>
+          <p>You agree not to:</p>
+          <ul>
+            <li>violate any applicable laws or regulations</li>
+            <li>attempt to gain unauthorized access to the Site or its systems</li>
+            <li>introduce malicious code, viruses, or automated scraping tools</li>
+            <li>impersonate another person or entity</li>
+          </ul>
+          <p>
+            Accounts may not be created, maintained, or operated by non-human actors, including animals such as raccoons, ducks, or similarly determined wildlife, even if such animals appear capable of interacting with keyboards or touchscreens.
+          </p>
+          <p>
+            The Site reserves the right to suspend accounts exhibiting behavior consistent with automated control, external manipulation, or unusually coordinated posting patterns suggestive of either bot activity or highly motivated squirrels.
+          </p>
+
+          <h4>4. User Accounts</h4>
+          <p>
+            Certain features of the Site may require the creation of a user account. You agree to provide accurate and complete information when creating an account and to maintain the security of your login credentials.
+          </p>
+          <p>
+            You are responsible for all activity occurring under your account, whether performed by you or by any other party with access to your credentials.
+          </p>
+          <p>
+            Accounts that appear to be accessed simultaneously from incompatible locations or timelines may be temporarily restricted while system integrity is reviewed.
+          </p>
+          <p>
+            If you suspect unauthorized access to your account, you should notify the Site promptly so appropriate measures can be taken.
+          </p>
+
+          <h4>5. Intellectual Property</h4>
+          <p>
+            All content available on the Site, including text, graphics, logos, images, software, and design elements, is the property of the Site or its licensors and is protected by applicable intellectual property laws.
+          </p>
+          <p>
+            You may not reproduce, distribute, modify, reverse engineer, or create derivative works from Site content without prior written permission.
+          </p>
+          <p>
+            Users are permitted to quote brief excerpts for commentary, discussion, or educational purposes. However, posting extended theatrical monologues unrelated to the subject matter—particularly those written in Elizabethan English—may be moderated if they disrupt normal discussion.
+          </p>
+
+          <h4>6. User-Generated Content</h4>
+          <p>
+            Users may submit content such as comments, posts, feedback, or other materials (“User Content”).
+          </p>
+          <p>
+            By submitting User Content, you grant the Site a worldwide, non-exclusive, royalty-free license to use, reproduce, distribute, and display such content in connection with operating the Site.
+          </p>
+          <p>
+            User Content must not include material that is unlawful, abusive, misleading, or intentionally disruptive to community discussion. Content that attempts to conduct ritual summoning, arcane spellcasting, or other forms of mystical interference within comment sections may be removed at the discretion of moderators.
+          </p>
+
+          <h4>7. Community Standards</h4>
+          <p>
+            Users are expected to engage respectfully with others. Harassment, personal attacks, hate speech, and persistent trolling are prohibited.
+          </p>
+          <p>
+            Moderators may remove content or restrict access when user behavior interferes with the productive functioning of the Site.
+          </p>
+          <p>
+            Behavior patterns that may trigger moderation review include repeated use of excessive capitalization, persistent attempts to train animals to operate accounts, or claims that the user possesses knowledge originating from future historical events.
+          </p>
+
+          <h4>8. Service Availability</h4>
+          <p>
+            The Site is provided on an “as available” basis. We do not guarantee that the Site will be uninterrupted or free from errors.
+          </p>
+          <p>
+            Service interruptions may occur due to scheduled maintenance, technical failures, infrastructure disruptions, or external conditions affecting internet connectivity.
+          </p>
+          <p>
+            External disruptions may include severe weather events, hardware failures, fiber network damage caused by wildlife, or other circumstances beyond reasonable operational control.
+          </p>
+          <p>
+            In rare situations where technical failures appear to involve unexplained phenomena inconsistent with conventional computing systems, the Site reserves the right to consult qualified technical specialists before restoring service.
+          </p>
+
+          <h4>9. Dispute Resolution</h4>
+          <p>
+            If a dispute arises between users or between a user and the Site, the parties are encouraged to seek informal resolution before pursuing formal legal remedies.
+          </p>
+          <p>
+            Where appropriate and mutually agreed upon, discussions may occur in an informal setting designed to promote constructive dialogue. Historical evidence suggests that cooperative conversation conducted over shared food may improve dispute resolution outcomes, though the Site does not require any specific menu item.
+          </p>
+          <p>
+            If informal resolution is unsuccessful, disputes shall be handled in accordance with applicable law and appropriate legal procedures.
+          </p>
+
+          <h4>10. Disclaimer of Warranties</h4>
+          <p>
+            The Site and its services are provided “as is” and “as available.” To the fullest extent permitted by law, we disclaim all warranties, express or implied, including warranties of merchantability, fitness for a particular purpose, and non-infringement.
+          </p>
+          <p>
+            We do not guarantee that the Site will always function without interruption, that all information will be completely accurate, or that internet infrastructure will behave predictably at all times.
+          </p>
+
+          <h4>11. Limitation of Liability</h4>
+          <p>
+            To the fullest extent permitted by law, the Site and its operators shall not be liable for indirect, incidental, consequential, or punitive damages arising from use of the Site.
+          </p>
+          <p>
+            This limitation applies even if the Site has been advised of the possibility of such damages.
+          </p>
+          <p>
+            The Site is not responsible for unrelated household events that may occur during or after internet use, including misplaced personal items, missing socks following laundry cycles, or other domestic anomalies.
+          </p>
+
+          <h4>12. Third-Party Links</h4>
+          <p>
+            The Site may contain links to third-party websites or services. These links are provided for convenience and informational purposes only.
+          </p>
+          <p>
+            We do not control or endorse third-party websites and are not responsible for their content, policies, or operational practices.
+          </p>
+          <p>
+            Users access third-party sites at their own discretion and should review the applicable terms and policies of those sites.
+          </p>
+
+          <h4>13. Termination</h4>
+          <p>
+            We reserve the right to suspend or terminate access to the Site at any time if a user violates these Terms or engages in behavior that disrupts the operation of the Site.
+          </p>
+          <p>
+            Termination decisions may consider patterns of misuse, including repeated policy violations, attempts to circumvent moderation systems, or coordinated efforts to introduce non-human participants into user discussions.
+          </p>
+
+          <h4>14. Governing Law</h4>
+          <p>
+            These Terms shall be governed by and interpreted in accordance with the laws of the applicable jurisdiction.
+          </p>
+          <p>
+            Any disputes arising under these Terms shall be resolved in appropriate courts unless otherwise required by law.
+          </p>
+
+          <h4>15. Severability</h4>
+          <p>
+            If any provision of these Terms is determined to be invalid or unenforceable, the remaining provisions shall remain in full force and effect.
+          </p>
+
+          <h4>16. Entire Agreement</h4>
+          <p>
+            These Terms constitute the entire agreement between users and the Site regarding access to and use of the Site and supersede any prior agreements or understandings relating to the same subject matter.
+          </p>
+        </div>
+      </div>
+
+      <div class="modalActions">
+        <button class="btn btnPrimary" id="agreeBtn" type="button">I Agree</button>
+        <button class="btn btnGhost" id="declineBtn" type="button">I Do Not Agree</button>
+        <button class="btn btnGhost" id="cancelStartBtn" type="button">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const viewTermsBtn = document.getElementById("viewTermsBtn");
+    const openTermsBtn = document.getElementById("openTermsBtn");
+
+    const termsModal = document.getElementById("termsModal");
+    const closeTermsModalBtn = document.getElementById("closeTermsModalBtn");
+
+    const startModal = document.getElementById("startModal");
+    const closeStartModalBtn = document.getElementById("closeStartModalBtn");
+    const cancelStartBtn = document.getElementById("cancelStartBtn");
+    const agreeBtn = document.getElementById("agreeBtn");
+    const declineBtn = document.getElementById("declineBtn");
+
+    const subjectSelect = document.getElementById("subjectSelect");
+    const levelSelect = document.getElementById("levelSelect");
+    const questionInput = document.getElementById("questionInput");
+    const pasteBtn = document.getElementById("pasteBtn");
+    const charCountText = document.getElementById("charCountText");
+    const progressFill = document.getElementById("progressFill");
+
+    function openViewTermsModal() {
+      termsModal.classList.add("show");
+      document.body.classList.add("modalOpen");
+    }
+
+    function closeViewTermsModal() {
+      termsModal.classList.remove("show");
+      document.body.classList.remove("modalOpen");
+    }
+
+    function openStartModal() {
+      startModal.classList.add("show");
+      document.body.classList.add("modalOpen");
+    }
+
+    function closeStartModal() {
+      startModal.classList.remove("show");
+      document.body.classList.remove("modalOpen");
+    }
+
+    function updatePlaceholder() {
+      const subject = subjectSelect.value;
+      const level = levelSelect.value;
+
+      if (subject === "mathematics") {
+        questionInput.placeholder = "Enter your math problem to solve...";
+      } else if (subject === "computer-science") {
+        questionInput.placeholder = "Paste your coding or CS question...";
+      } else if (subject === "biology") {
+        questionInput.placeholder = "Enter your biology question...";
+      } else if (subject === "chemistry") {
+        questionInput.placeholder = "Enter your chemistry problem...";
+      } else if (subject === "physics") {
+        questionInput.placeholder = "Enter your physics problem...";
+      } else if (subject === "english") {
+        questionInput.placeholder = "Enter your reading or writing question...";
+      } else if (subject === "history") {
+        questionInput.placeholder = "Enter your history question...";
+      } else if (subject === "economics") {
+        questionInput.placeholder = "Enter your economics question...";
+      } else {
+        questionInput.placeholder = "Enter your homework problem to solve...";
+      }
+
+      if (level === "middle-school" && subject === "") {
+        questionInput.placeholder = "Enter your middle school homework question...";
+      }
+      if (level === "high-school" && subject === "") {
+        questionInput.placeholder = "Enter your high school homework question...";
+      }
+      if (level === "graduate" && subject === "") {
+        questionInput.placeholder = "Enter your advanced academic question...";
+      }
+    }
+
+    function updateCharacterCount() {
+      let text = questionInput.value;
+
+      if (text.length > 500) {
+        text = text.substring(0, 500);
+        questionInput.value = text;
+      }
+
+      const length = text.length;
+      const percent = (length / 500) * 100;
+
+      charCountText.textContent = `Characters: ${length} out of 500`;
+      progressFill.style.width = `${percent}%`;
+    }
+
+    async function handlePaste() {
+      try {
+        const text = await navigator.clipboard.readText();
+
+        if (!text) {
+          alert("Clipboard is empty.");
+          return;
+        }
+
+        questionInput.value = text;
+        questionInput.focus();
+        updateCharacterCount();
+      } catch (error) {
+        alert("Paste failed. Please allow clipboard access and try again.");
+        console.error("Clipboard paste error:", error);
+      }
+    }
+
+    subjectSelect.addEventListener("change", updatePlaceholder);
+    levelSelect.addEventListener("change", updatePlaceholder);
+    questionInput.addEventListener("input", updateCharacterCount);
+    pasteBtn.addEventListener("click", handlePaste);
+
+    viewTermsBtn.addEventListener("click", openViewTermsModal);
+    openTermsBtn.addEventListener("click", openStartModal);
+
+    closeTermsModalBtn.addEventListener("click", closeViewTermsModal);
+    closeStartModalBtn.addEventListener("click", closeStartModal);
+    cancelStartBtn.addEventListener("click", closeStartModal);
+
+    agreeBtn.addEventListener("click", () => {
+      window.location.href = "caught.html";
+    });
+
+    declineBtn.addEventListener("click", () => {
+      window.location.href = "safe.html";
+    });
+
+    termsModal.addEventListener("click", (e) => {
+      if (e.target === termsModal) {
+        closeViewTermsModal();
+      }
+    });
+
+    startModal.addEventListener("click", (e) => {
+      if (e.target === startModal) {
+        closeStartModal();
+      }
+    });
+
+    updateCharacterCount();
+  </script>
+
 </body>
 </html>
