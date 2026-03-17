@@ -951,3 +951,19 @@ body.modalOpen{
     font-size:24px;
   }
 }
+
+
+.safeResultCard{
+  max-width: 920px;
+}
+
+.safeIcon{
+  background: linear-gradient(135deg,#22c55e,#06b6d4);
+  box-shadow: 0 16px 40px rgba(34,197,94,0.22);
+}
+
+.safeAlert{
+  background: rgba(34,197,94,0.12);
+  border:1px solid rgba(34,197,94,0.20);
+  color:#d8ffe7;
+}
